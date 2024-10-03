@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d9a4ae782d3a4c93af62f8d39e8af5a4" Name="Diagram1">
+        <EntityTypeShape EntityType="фзеулфModel.Dogovor" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Istoria" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Kategoria" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Klient" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Material" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Mesta_Hranenia" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Postavcik" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Preparat" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Shet" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Sotrudnic" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Zakaz" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Zakazanie_Preparat" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="фзеулфModel.Zapis" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="фзеулфModel.FK_Shet_Dogovor" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Zapis_Dogovor" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Istoria_Klient" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Istoria_Zakaz" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Material_Kategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Zakaz_Klient" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Zapis_Klient" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Material_Mesta_Hranenia" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Material_Sotrudnic" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Zakaz_Postavcik" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Zakazanie_Preparat_Preparat" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Zapis_Sotrudnic" ManuallyRouted="false" />
+        <AssociationConnector Association="фзеулфModel.FK_Zakazanie_Preparat_Zakaz" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
