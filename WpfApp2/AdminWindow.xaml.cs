@@ -67,6 +67,12 @@ namespace Pharmacy321
 
             LoadContractsGrid(); // Обновление списка договоров
         }
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
 
     }
 }

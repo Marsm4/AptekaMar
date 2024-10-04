@@ -5,12 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pharmacy321"
         mc:Ignorable="d"
-        Title="SpecialistWindow" Height="750" Width="800">
+        Title="SpecialistWindow" Height="826" Width="800">
 	<Grid>
 		<TabControl>
 			<TabItem Header="Добавить клиента">
+
 				<StackPanel Margin="10">
-					<!-- Поля для добавления клиента -->
+                    <Button Content="Выйти" 
+        Style="{StaticResource MyButtonStyle}" 
+        HorizontalAlignment="Right"
+        Margin="10"
+        Click="LogoutButton_Click"/>
+
+                    <!-- Поля для добавления клиента -->
 					<Label Content="Фамилия:" Style="{StaticResource MyLabelStyle}" />
 					<TextBox x:Name="FNameTextBox" Style="{StaticResource MyTextBoxStyle}" />
 
@@ -36,12 +43,19 @@
 					</ComboBox>
 
 					<Button Content="Добавить клиента" Style="{StaticResource MyButtonStyle}" Click="AddClientButton_Click" />
-				</StackPanel>
+
+                </StackPanel>
 			</TabItem>
             
 			<TabItem Header="Записать клиента на прием">
     <StackPanel Margin="10">
-        <Label Content="Выберите клиента:" Style="{StaticResource MyLabelStyle}" />
+                    <Button Content="Выйти" 
+        Style="{StaticResource MyButtonStyle}" 
+        HorizontalAlignment="Right"
+        Margin="10"
+        Click="LogoutButton_Click"/>
+
+                    <Label Content="Выберите клиента:" Style="{StaticResource MyLabelStyle}" />
         <TextBox x:Name="ClientsTextBox" Style="{StaticResource MyTextBoxStyle}" TextChanged="ClientsTextBox_TextChanged" />
         <ListBox x:Name="ClientsListBox" Style="{StaticResource MyListBoxStyle}" SelectionChanged="ClientsListBox_SelectionChanged" Visibility="Collapsed"/>
 
@@ -70,7 +84,13 @@
 							<DataGridTextColumn Header="Скидка" Binding="{Binding Skidka}" />
 						</DataGrid.Columns>
 					</DataGrid>
-				</StackPanel>
+                    <Button Content="Выйти" 
+        Style="{StaticResource MyButtonStyle}" 
+        HorizontalAlignment="Right"
+        Margin="10"
+        Click="LogoutButton_Click"/>
+
+                </StackPanel>
 			</TabItem>
 
 		</TabControl>

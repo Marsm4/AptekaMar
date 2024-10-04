@@ -33,12 +33,24 @@
                         <TextBox x:Name="Shas_RabotTextBox" Style="{StaticResource MyTextBoxStyle}" />
                     </UniformGrid>
                     <Button Content="Добавить сотрудника" Style="{StaticResource MyButtonStyle}" Click="AddEmployeeButton_Click" />
+                    <Button Content="Выйти" 
+        Style="{StaticResource MyButtonStyle}" 
+        HorizontalAlignment="Right"
+        Margin="10"
+        Click="LogoutButton_Click"/>
+
                 </StackPanel>
+                
             </TabItem>
 
             <!-- Вкладка для отображения сотрудников -->
             <TabItem Header="Сотрудники">
                 <StackPanel Margin="10">
+                    <Button Content="Выйти" 
+        Style="{StaticResource MyButtonStyle}" 
+        HorizontalAlignment="Right"
+        Margin="10"
+        Click="LogoutButton_Click"/>
                     <DataGrid x:Name="EmployeesDataGrid" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID_Sotudnica}" />
@@ -63,7 +75,13 @@
                     <TextBox x:Name="Nomer_DogovotaTextBox" Style="{StaticResource MyTextBoxStyle}" />
 
                     <Button Content="Создать договор" Click="CreateContractButton_Click" Style="{StaticResource MyButtonStyle}" />
-				</StackPanel>
+                    <Button Content="Выйти" 
+        Style="{StaticResource MyButtonStyle}" 
+        HorizontalAlignment="Right"
+        Margin="10"
+        Click="LogoutButton_Click"/>
+
+                </StackPanel>
 			</TabItem>
 
 			<!-- Вкладка для отображения договоров -->
@@ -76,8 +94,16 @@
 							<DataGridTextColumn Header="Описание" Binding="{Binding Description}" />
 						</DataGrid.Columns>
 					</DataGrid>
-				</StackPanel>
+                    <Button Content="Выйти" 
+        Style="{StaticResource MyButtonStyle}" 
+        HorizontalAlignment="Right"
+        Margin="10"
+        Click="LogoutButton_Click"/>
+
+                </StackPanel>
+                
 			</TabItem>
+            
 		</TabControl>
 	</Grid>
 </Window>

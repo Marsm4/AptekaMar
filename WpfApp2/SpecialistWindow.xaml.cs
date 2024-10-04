@@ -34,6 +34,12 @@ namespace Pharmacy321
             LoadClientsGrid();
             LoadContracts();
         }
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
 
 
         protected void LoadSpecialists()
