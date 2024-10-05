@@ -22,9 +22,8 @@ namespace Pharmacy321
         private Database database;
         private int? SelectedClientId; // Для хранения ID клиента
         private int? SelectedSpecialistId; // Для хранения ID специалиста
-        private int? SelectedContractId; // Для хранения ID договора
-
-
+       /* private int? SelectedContractId;*/ // Для хранения ID договора
+    
         public SpecialistWindow()
         {
             InitializeComponent();
@@ -55,41 +54,57 @@ namespace Pharmacy321
             SpecialistsComboBox.SelectedValuePath = "ID_Sotrudnic"; 
         }
 
-        private void AddClientButton_Click(object sender, RoutedEventArgs e)
-        {
+       private void AddClientButton_Click(object sender, RoutedEventArgs e)
+{
+    string FName = FNameTextBox.Text;
+    string Name = NameTextBox.Text;
+    string Othestvo = OthestvoTextBox.Text;
+    string Pochta = PochtaTextBox.Text;
+    string Telefon = TelefonTextBox.Text;
+    string SkidkaStr = (SkidkaComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
-            string FName = FNameTextBox.Text;
-            string Name = NameTextBox.Text;
-            string Othestvo = OthestvoTextBox.Text;
-            string Pochta = PochtaTextBox.Text;
-            string Telefon = TelefonTextBox.Text;
-            string Skidka = (SkidkaComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+    if (string.IsNullOrWhiteSpace(FName) ||
+        string.IsNullOrWhiteSpace(Name) ||
+        string.IsNullOrWhiteSpace(Othestvo) ||
+        string.IsNullOrWhiteSpace(Pochta) ||
+        string.IsNullOrWhiteSpace(Telefon) ||
+        string.IsNullOrWhiteSpace(SkidkaStr))
+    {
+        MessageBox.Show("Пожалуйста, заполните все данные.");
+        return;
+    }
 
+    // Преобразование строки скидки в int
+    if (int.TryParse(SkidkaStr, out int Skidka))
+    {
+        database.AddClient(FName, Name, Othestvo, Pochta, Telefon, Skidka);
+        MessageBox.Show("Клиент добавлен успешно!");
 
+        // Очистка полей после добавления
+        FNameTextBox.Clear();
+        NameTextBox.Clear();
+        OthestvoTextBox.Clear();
+        PochtaTextBox.Clear();
+        TelefonTextBox.Clear();
+        SkidkaComboBox.SelectedIndex = -1;
+    }
+    else
+    {
+        MessageBox.Show("Пожалуйста, выберите корректную скидку.");
+    }
+}
 
-            database.AddClient(FName, Name, Othestvo, Pochta, Telefon, Skidka);
-            MessageBox.Show("Клиент добавлен успешно!");
-
-            // Очистка полей после добавления
-            FNameTextBox.Clear();
-            NameTextBox.Clear();
-            OthestvoTextBox.Clear();
-            PochtaTextBox.Clear();
-            TelefonTextBox.Clear();
-            SkidkaComboBox.SelectedIndex = -1;
-        }
 
         private void RecordAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!SelectedClientId.HasValue ||
-                !SelectedSpecialistId.HasValue ||
-                !SelectedContractId.HasValue)
+            if (!SelectedClientId.HasValue || !SelectedSpecialistId.HasValue)
             {
-                MessageBox.Show("Пожалуйста, выберите клиента, специалиста и договор.");
+                MessageBox.Show("Пожалуйста, выберите клиента и специалиста.");
                 return;
             }
 
-            database.RecordAppointment(SelectedClientId.Value, SelectedSpecialistId.Value, SelectedContractId.Value);
+            // Предположим, что метод RecordAppointment теперь не требует ID договора
+            database.RecordAppointment(SelectedClientId.Value, SelectedSpecialistId.Value);
             MessageBox.Show("Запись на прием выполнена успешно!");
         }
 
@@ -164,12 +179,12 @@ namespace Pharmacy321
             }
         }
 
-        private void ContractsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ContractsComboBox.SelectedItem != null)
-            {
-                SelectedContractId = (int)ContractsComboBox.SelectedValue; // Получаем ID_Dogovora
-            }
-        }
+        //private void ContractsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (ContractsComboBox.SelectedItem != null)
+        //    {
+        //        SelectedContractId = (int)ContractsComboBox.SelectedValue; // Получаем ID_Dogovora
+        //    }
+        //}
     }
 }

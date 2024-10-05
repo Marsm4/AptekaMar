@@ -13,7 +13,7 @@ namespace Pharmacy321
         {
             InitializeComponent();
             database = new Database();
-          
+
             LoadContractsGrid();
         }
 
@@ -34,7 +34,23 @@ namespace Pharmacy321
             string Doljnost = DoljnostTextBox.Text;
             string Shas_Rabot = Shas_RabotTextBox.Text;
 
-            database.AddEmployee(FName, Name, Othestvo, Adres, Telefon, Poshta, Doljnost, Shas_Rabot); // Метод для добавления сотрудника в БД
+            int telefon;
+            if (!int.TryParse(TelefonTextBox.Text, out telefon))
+            {
+                MessageBox.Show("Введите корректный номер телефона.");
+                return;
+            }
+
+            int shasRabot;
+            if (!int.TryParse(Shas_RabotTextBox.Text, out shasRabot))
+            {
+                MessageBox.Show("Введите корректное количество часов работы.");
+                return;
+            }
+
+            database.AddEmployee(FName, Name, Othestvo, Adres, telefon, Poshta, Doljnost, shasRabot);
+
+            // Метод для добавления сотрудника в БД
             MessageBox.Show("Сотрудник добавлен успешно!");
 
             // Очистка полей после добавления
@@ -55,23 +71,39 @@ namespace Pharmacy321
 
             if (string.IsNullOrWhiteSpace(Nomer_Dogovota))
             {
-                MessageBox.Show("Пожалуйста, введите описание договора.");
+                MessageBox.Show("Пожалуйста, введите номер договора.");
                 return;
             }
 
-            database.CreateContract(Nomer_Dogovota); // Создание договора в БД
-            MessageBox.Show("Договор создан успешно!");
+            if (int.TryParse(Nomer_Dogovota, out int nomerDogovora))
+            {
+                try
+                {
+                    database.CreateContract(nomerDogovora); // Создание договора в БД
+                    MessageBox.Show("Договор создан успешно!");
 
-            // Очистка полей после добавления
-            Nomer_DogovotaTextBox.Clear();
+                    // Очистка полей после добавления
+                    Nomer_DogovotaTextBox.Clear();
 
-            LoadContractsGrid(); // Обновление списка договоров
+                    LoadContractsGrid(); // Обновление списка договоров
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Произошла ошибка: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Номер договора должен быть числом.");
+            }
         }
+
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            // Логика выхода из окна администратора
+            MainWindow mainWindow = new MainWindow(); // Переход на окно авторизации
             mainWindow.Show();
-            this.Close();
+            this.Close(); // Закрытие текущего окна
         }
 
     }
