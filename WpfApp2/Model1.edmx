@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ID_Dogovora" />
           </Key>
-          <Property Name="ID_Dogovora" Type="int" Nullable="false" />
+          <Property Name="ID_Dogovora" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Nomer_Dogovota" Type="int" />
         </EntityType>
         <EntityType Name="Istoria">
@@ -405,7 +405,7 @@
           <Key>
             <PropertyRef Name="ID_Dogovora" />
           </Key>
-          <Property Name="ID_Dogovora" Type="Int32" Nullable="false" />
+          <Property Name="ID_Dogovora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nomer_Dogovota" Type="Int32" />
           <NavigationProperty Name="Shet" Relationship="Self.FK_Shet_Dogovor" FromRole="Dogovor" ToRole="Shet" />
           <NavigationProperty Name="Zapis" Relationship="Self.FK_Zapis_Dogovor" FromRole="Dogovor" ToRole="Zapis" />

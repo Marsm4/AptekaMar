@@ -89,9 +89,8 @@
 				<StackPanel Margin="10">
 					<DataGrid x:Name="ContractsDataGrid" AutoGenerateColumns="False">
 						<DataGrid.Columns>
-							<DataGridTextColumn Header="ID" Binding="{Binding ID_Dogovor}" />
-							<DataGridTextColumn Header="ID Сотрудника" Binding="{Binding ID_Sotrudnic}" />
-							<DataGridTextColumn Header="Описание" Binding="{Binding Description}" />
+							<DataGridTextColumn Header="ID" Binding="{Binding ID_Dogovora}" />
+							<DataGridTextColumn Header="Номер договора" Binding="{Binding Nomer_Dogovota}" />
 						</DataGrid.Columns>
 					</DataGrid>
                     <Button Content="Выйти" 

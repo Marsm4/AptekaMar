@@ -95,23 +95,6 @@ namespace Pharmacy321
 }
 
 
-        private void RecordAppointmentButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!SelectedClientId.HasValue || !SelectedSpecialistId.HasValue)
-            {
-                MessageBox.Show("Пожалуйста, выберите клиента и специалиста.");
-                return;
-            }
-
-            // Предположим, что метод RecordAppointment теперь не требует ID договора
-            database.RecordAppointment(SelectedClientId.Value, SelectedSpecialistId.Value);
-            MessageBox.Show("Запись на прием выполнена успешно!");
-        }
-
-
-
-
-
         private void LoadClientsGrid()
 {
     var clients = database.GetClients(); 

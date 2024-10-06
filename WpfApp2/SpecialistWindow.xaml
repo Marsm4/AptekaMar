@@ -66,7 +66,7 @@
         <ComboBox x:Name="ContractsComboBox" Style="{StaticResource MyComboBoxStyle}" />
 
 
-        <Button Content="Записать на прием" Style="{StaticResource MyButtonStyle}" Click="RecordAppointmentButton_Click" />
+        <!--<Button Content="Записать на прием" Style="{StaticResource MyButtonStyle}" Click="RecordAppointmentButton_Click" />-->
     </StackPanel>
 </TabItem>
 

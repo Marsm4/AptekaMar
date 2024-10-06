@@ -13,14 +13,19 @@ namespace Pharmacy321
         {
             InitializeComponent();
             database = new Database();
-
-            LoadContractsGrid();
+            LoadContractsGrid();  // Загрузка договоров
+            LoadEmployeesGrid();  // Загрузка сотрудников
         }
 
         private void LoadContractsGrid()
         {
             DataTable contracts = database.GetContracts(); // Метод для получения договоров из БД
             ContractsDataGrid.ItemsSource = contracts.DefaultView;
+        }
+        private void LoadEmployeesGrid()
+        {
+            DataTable employees = database.GetEmployees(); // Метод для получения сотрудников из БД
+            EmployeesDataGrid.ItemsSource = employees.DefaultView;
         }
 
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
@@ -29,10 +34,10 @@ namespace Pharmacy321
             string Name = NameTextBox.Text;
             string Othestvo = OthestvoTextBox.Text;
             string Adres = AdresTextBox.Text;
-            string Telefon = TelefonTextBox.Text;
+            _ = TelefonTextBox.Text;
             string Poshta = PoshtaTextBox.Text;
             string Doljnost = DoljnostTextBox.Text;
-            string Shas_Rabot = Shas_RabotTextBox.Text;
+            _ = Shas_RabotTextBox.Text;
 
             int telefon;
             if (!int.TryParse(TelefonTextBox.Text, out telefon))
