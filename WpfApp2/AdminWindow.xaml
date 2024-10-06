@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Pharmacy321.AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AdminWindow" Height="600" Width="800">
+        Title="AdminWindow" Height="900" Width="800">
 	<Grid>
         <TabControl>
             <!-- Вкладка для добавления сотрудников -->
@@ -67,7 +67,56 @@
                 </StackPanel>
             </TabItem>
 
-            <!-- Вкладка для создания договоров -->
+			<!-- Вкладка для отображения списка поставщиков -->
+			<TabItem Header="Список поставщиков">
+				<StackPanel Margin="10">
+					<DataGrid x:Name="SuppliersDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Style="{StaticResource MyDataGridStyle}">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="ID" Binding="{Binding ID_Postavcik}" Width="Auto"/>
+							<DataGridTextColumn Header="Юридическое название" Binding="{Binding UR_Nazvanie}" Width="Auto"/>
+							<DataGridTextColumn Header="Адрес" Binding="{Binding UR_Adres}" Width="Auto"/>
+							<DataGridTextColumn Header="ИНН" Binding="{Binding INN}" Width="Auto"/>
+							<DataGridTextColumn Header="Договор" Binding="{Binding Number_Dogovor}" Width="Auto"/>
+							<DataGridTextColumn Header="ОКПО" Binding="{Binding Kod_OKPO}" Width="Auto"/>
+							<DataGridTextColumn Header="Телефон" Binding="{Binding Telefon}" Width="Auto"/>
+							<DataGridTextColumn Header="Контакт лица" Binding="{Binding Kontakt_Otvet_Lica}" Width="Auto"/>
+						</DataGrid.Columns>
+					</DataGrid>
+				</StackPanel>
+			</TabItem>
+
+			<!-- Вкладка для добавления нового поставщика -->
+			<TabItem Header="Добавить поставщика">
+				<StackPanel Margin="10">
+					<UniformGrid Columns="2" Margin="0,0,0,10">
+						<Label Content="Юридическое название:" Style="{StaticResource MyLabelStyle}" />
+						<TextBox x:Name="UR_NazvanieTextBox" Style="{StaticResource MyTextBoxStyle}" />
+
+						<Label Content="Юридический адрес:" Style="{StaticResource MyLabelStyle}" />
+						<TextBox x:Name="UR_AdresTextBox" Style="{StaticResource MyTextBoxStyle}" />
+
+						<Label Content="ИНН:" Style="{StaticResource MyLabelStyle}" />
+						<TextBox x:Name="INNTextBox" Style="{StaticResource MyTextBoxStyle}" />
+
+						<Label Content="Номер договора:" Style="{StaticResource MyLabelStyle}" />
+						<TextBox x:Name="NumberDogovorTextBox" Style="{StaticResource MyTextBoxStyle}" />
+
+						<Label Content="Код ОКПО:" Style="{StaticResource MyLabelStyle}" />
+						<TextBox x:Name="KodOKPOTextBox" Style="{StaticResource MyTextBoxStyle}" />
+
+						<Label Content="Телефон:" Style="{StaticResource MyLabelStyle}" />
+						<TextBox x:Name="TelefonaTextBox" Style="{StaticResource MyTextBoxStyle}" />
+
+						<Label Content="Контактное лицо:" Style="{StaticResource MyLabelStyle}" />
+						<TextBox x:Name="KontaktOtvetLicaTextBox" Style="{StaticResource MyTextBoxStyle}" />
+					</UniformGrid>
+
+					<Button Content="Добавить поставщика" Style="{StaticResource MyButtonStyle}" Click="AddSupplierButton_Click" />
+					<Button Content="Выйти" Style="{StaticResource MyButtonStyle}" HorizontalAlignment="Right" Margin="10" Click="LogoutButton_Click"/>
+				</StackPanel>
+			</TabItem>
+
+			<!-- Вкладка для создания договоров -->
 			<TabItem Header="Создать договор">
 				<StackPanel Margin="10">
 
@@ -93,14 +142,13 @@
 							<DataGridTextColumn Header="Номер договора" Binding="{Binding Nomer_Dogovota}" />
 						</DataGrid.Columns>
 					</DataGrid>
-                    <Button Content="Выйти" 
+					<Button Content="Выйти" 
         Style="{StaticResource MyButtonStyle}" 
         HorizontalAlignment="Right"
         Margin="10"
         Click="LogoutButton_Click"/>
 
-                </StackPanel>
-                
+				</StackPanel>
 			</TabItem>
             
 		</TabControl>

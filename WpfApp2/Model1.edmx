@@ -62,7 +62,7 @@
           <Key>
             <PropertyRef Name="ID_Postavcik" />
           </Key>
-          <Property Name="ID_Postavcik" Type="int" Nullable="false" />
+          <Property Name="ID_Postavcik" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UR_Nazvanie" Type="char" MaxLength="20" />
           <Property Name="UR_Adres" Type="char" MaxLength="20" />
           <Property Name="INN" Type="int" />
@@ -470,7 +470,7 @@
           <Key>
             <PropertyRef Name="ID_Postavcik" />
           </Key>
-          <Property Name="ID_Postavcik" Type="Int32" Nullable="false" />
+          <Property Name="ID_Postavcik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UR_Nazvanie" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="UR_Adres" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="INN" Type="Int32" />

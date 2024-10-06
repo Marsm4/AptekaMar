@@ -1,21 +1,100 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp2;
 
 namespace Pharmacy321
 {
     public partial class AdminWindow : Window
     {
         private Database database;
-
+        private фзеулфEntities context;
         public AdminWindow()
         {
             InitializeComponent();
             database = new Database();
             LoadContractsGrid();  // Загрузка договоров
-            LoadEmployeesGrid();  // Загрузка сотрудников
+            LoadEmployeesGrid();// Загрузка сотрудников
+            LoadSuppliersGrid(); 
         }
+        private void AddSupplierButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Проверяем, что TextBox не пустые
+                if (string.IsNullOrEmpty(UR_NazvanieTextBox.Text) ||
+                    string.IsNullOrEmpty(UR_AdresTextBox.Text) ||
+                    string.IsNullOrEmpty(INNTextBox.Text) ||
+                    string.IsNullOrEmpty(NumberDogovorTextBox.Text) ||
+                    string.IsNullOrEmpty(KodOKPOTextBox.Text) ||
+                    string.IsNullOrEmpty(TelefonaTextBox.Text) ||
+                    string.IsNullOrEmpty(KontaktOtvetLicaTextBox.Text))
+                {
+                    MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Создаем новый объект поставщика
+                var newSupplier = new Postavcik
+                {
+                    UR_Nazvanie = UR_NazvanieTextBox.Text,
+                    UR_Adres = UR_AdresTextBox.Text,
+                    INN = int.Parse(INNTextBox.Text),
+                    Number_Dogovor = int.Parse(NumberDogovorTextBox.Text),
+                    Kod_OKPO = int.Parse(KodOKPOTextBox.Text),
+                    Telefon = int.Parse(TelefonaTextBox.Text),
+                    Kontakt_Otvet_Lica = int.Parse(KontaktOtvetLicaTextBox.Text)
+                };
+
+                // Подключение к базе данных
+                using (var context = new фзеулфEntities()) // Обязательно инициализируйте контекст
+                {
+                    context.Postavcik.Add(newSupplier); // Добавляем объект поставщика
+                    context.SaveChanges(); // Сохраняем изменения
+                }
+
+                MessageBox.Show("Поставщик успешно добавлен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Очистить поля после добавления
+                UR_NazvanieTextBox.Clear();
+                UR_AdresTextBox.Clear();
+                INNTextBox.Clear();
+                NumberDogovorTextBox.Clear();
+                KodOKPOTextBox.Clear();
+                TelefonaTextBox.Clear();
+                KontaktOtvetLicaTextBox.Clear();
+
+                LoadSuppliersGrid(); // Обновляем список поставщиков
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LoadSuppliersGrid()
+        {
+            try
+            {
+                // Инициализируем контекст, если он не был инициализирован
+                if (context == null)
+                {
+                    context = new фзеулфEntities();
+                }
+
+                var suppliersList = context.Postavcik.ToList();
+                SuppliersDataGrid.ItemsSource = suppliersList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке списка поставщиков: {ex.Message}");
+            }
+        }
+
+
 
         private void LoadContractsGrid()
         {
