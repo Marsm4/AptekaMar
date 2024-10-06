@@ -175,6 +175,32 @@ namespace Pharmacy321
                 MessageBox.Show($"Ошибка при создании договора: {ex.Message}\n{ex.StackTrace}");
             }
         }
+        public void AddPreparat(string nazvanie, int kolishestvo, int price, int? skidka)
+        {
+            try
+            {
+                Preparat newPreparat = new Preparat
+                {
+                    Nazvanie = nazvanie,
+                    Kolishestvo = kolishestvo,
+                    Price = price,
+                    Skidka = skidka
+                };
+
+                context.Preparat.Add(newPreparat);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при добавлении препарата: {ex.Message}");
+            }
+        }
+        // Пример метода для получения препаратов из базы данных
+        public List<Preparat> GetPreparations()
+        {
+            return context.Preparat.ToList(); // Предполагается, что у вас есть DbSet<Preparat> в вашем контексте базы данных
+        }
+
 
 
     }

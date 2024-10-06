@@ -25,7 +25,6 @@ namespace WpfApp2
         public Nullable<int> Kolishestvo { get; set; }
         public Nullable<int> Price { get; set; }
         public Nullable<int> Skidka { get; set; }
-        public Nullable<int> ID_Postavchic { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zakazanie_Preparat> Zakazanie_Preparat { get; set; }

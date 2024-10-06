@@ -83,7 +83,7 @@ namespace Pharmacy321
 
         private bool CheckEmployeePassword(string password)
         {
-            return password == "employee_password";
+            return password == "12345";
         }
 
         private bool CheckAccountantPassword(string password)

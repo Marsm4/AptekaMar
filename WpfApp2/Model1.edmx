@@ -75,7 +75,7 @@
           <Key>
             <PropertyRef Name="ID_Preparat" />
           </Key>
-          <Property Name="ID_Preparat" Type="int" Nullable="false" />
+          <Property Name="ID_Preparat" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Nazvanie" Type="char" MaxLength="20" />
           <Property Name="Kolishestvo" Type="int" />
           <Property Name="Price" Type="int" />
@@ -484,12 +484,11 @@
           <Key>
             <PropertyRef Name="ID_Preparat" />
           </Key>
-          <Property Name="ID_Preparat" Type="Int32" Nullable="false" />
+          <Property Name="ID_Preparat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nazvanie" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="Kolishestvo" Type="Int32" />
           <Property Name="Price" Type="Int32" />
           <Property Name="Skidka" Type="Int32" />
-          <Property Name="ID_Postavchic" Type="Int32" />
           <NavigationProperty Name="Zakazanie_Preparat" Relationship="Self.FK_Zakazanie_Preparat_Preparat" FromRole="Preparat" ToRole="Zakazanie_Preparat" />
         </EntityType>
         <EntityType Name="Shet">
@@ -915,7 +914,6 @@
                 <ScalarProperty Name="Kolishestvo" ColumnName="Kolishestvo" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Skidka" ColumnName="Skidka" />
-                <ScalarProperty Name="ID_Postavchic" ColumnName="ID_Postavchic" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
